@@ -556,6 +556,23 @@ Prism.languages.javascript = Prism.languages.extend('clike', {
 	'number': /\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|-?Infinity)\b/g,
 	'function': /(?!\d)[a-z0-9_$]+(?=\()/ig
 });
+Prism.languages.js = Prism.languages.javascript;
+
+Prism.languages.json = {
+    'property': /"(\b|\B)[\w-]+"(?=\s*:)/ig,
+    'number': /\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?)\b/g,
+    'string': /"(?!:)(\\?[^'"])*?"(?!:)/g,
+    'function': {
+		pattern: /[a-z0-9_]+\(/ig,
+		inside: {
+			punctuation: /\(/
+		}
+	},
+    'punctuation': /[{}[\]);,]/g,
+    'operator': /:/g,
+    'boolean': /\b(true|false)\b/gi,
+    'null': /\bnull\b/gi,
+};
 
 Prism.languages.insertBefore('javascript', 'keyword', {
 	'regex': {
@@ -965,12 +982,8 @@ Prism.languages.git = {
 
 // Adding a blank language to allow a syntax-free default option
 Prism.languages.none = {};
-
-// Language Aliases
 Prism.languages.text = Prism.languages.none;
 Prism.languages.txt  = Prism.languages.none;
-Prism.languages.json = Prism.languages.javascript;
-Prism.languages.js   = Prism.languages.javascript;
 
 Prism.hooks.add('after-highlight', function (env) {
 	// works only for <code> wrapped inside <pre data-line-numbers> (not inline)
