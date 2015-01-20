@@ -967,10 +967,10 @@ Prism.languages.git = {
 Prism.languages.none = {};
 
 // Language Aliases
-Prism.languages.text = Prism.languages.extend('none', {});
-Prism.languages.txt  = Prism.languages.extend('none', {});
-Prism.languages.json = Prism.languages.extend('javascript', {});
-Prism.languages.js   = Prism.languages.extend('javascript', {});
+Prism.languages.text = Prism.languages.none;
+Prism.languages.txt  = Prism.languages.none;
+Prism.languages.json = Prism.languages.javascript;
+Prism.languages.js   = Prism.languages.javascript;
 
 Prism.hooks.add('after-highlight', function (env) {
 	// works only for <code> wrapped inside <pre data-line-numbers> (not inline)
