@@ -962,6 +962,16 @@ Prism.languages.git = {
 	'commit_sha1': /^commit \w{40}$/m
 };
 ;
+
+// Adding a blank language to allow a syntax-free default option
+Prism.languages.none = {};
+
+// Language Aliases
+Prism.languages.text = Prism.languages.extend('none', {});
+Prism.languages.txt  = Prism.languages.extend('none', {});
+Prism.languages.json = Prism.languages.extend('javascript', {});
+Prism.languages.js   = Prism.languages.extend('javascript', {});
+
 Prism.hooks.add('after-highlight', function (env) {
 	// works only for <code> wrapped inside <pre data-line-numbers> (not inline)
 	var pre = env.element.parentNode;
@@ -992,15 +1002,18 @@ if (!self.Prism || !self.document || !document.querySelector) {
 	return;
 }
 
+// File Extensions
 var Extensions = {
-	'js': 'javascript',
+	'js'  : 'javascript',
+	'json': 'javascript',
 	'html': 'markup',
-	'svg': 'markup',
-	'xml': 'markup',
-	'py': 'python',
-	'rb': 'ruby',
-	'ps1': 'powershell',
-	'psm1': 'powershell'
+	'svg' : 'markup',
+	'xml' : 'markup',
+	'py'  : 'python',
+	'rb'  : 'ruby',
+	'ps1' : 'powershell',
+	'psm1': 'powershell',
+	'txt' : 'none'
 };
 
 Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function(pre) {
